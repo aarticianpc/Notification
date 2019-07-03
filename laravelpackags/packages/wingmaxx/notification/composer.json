@@ -1,0 +1,6 @@
+{
+    "name": "user/notification",
+    "description": "this is for maintainance notifica notification",
+    "type": "library",
+    "require": {}
+}
