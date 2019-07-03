@@ -1,5 +1,5 @@
 {
-    "name": "user/notification",
+    "name": "WtNotification/notification",
     "description": "this is for maintainance notifica notification",
     "type": "library",
     "require": {}
