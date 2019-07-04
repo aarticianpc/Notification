@@ -16,8 +16,6 @@ class NotificationrServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('Wingmaxx\Notification\NotificationController');
-        $this->loadViewsFrom(__DIR__.'/views', 'notification');
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
     }
 
     /**
@@ -27,6 +25,7 @@ class NotificationrServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+           $this->loadMigrationsFrom(__DIR__.'/migrations');
            $data=Notification::whereBetween(DB::raw('NOW()'),[DB::raw('startdate'),DB::raw('enddate')])->get();
            $notdata='';
            foreach($data as $ms){
