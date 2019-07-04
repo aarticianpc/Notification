@@ -1,6 +1,18 @@
 {
     "name": "wt-notification/notification",
-    "description": "this is for maintainance notifica notification",
+    "description": "This is for maintainance notifica notification",
     "type": "library",
-    "require": {}
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wingmaxx\\Notification\\NotificationrServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Wingmaxx\\Notification\\": "src/"
+        }
+    }
 }
