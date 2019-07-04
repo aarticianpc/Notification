@@ -15,7 +15,14 @@ class NotificationrServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Wingmaxx\Notification\NotificationController');
+        $data=Notification::whereBetween(DB::raw('NOW()'),[DB::raw('startdate'),DB::raw('enddate')])->get();
+        $notdata='';
+        foreach($data as $ms){
+             $notdata.="<p class='cls-wt-notification alert alert-warning'>$ms->message</p>";
+        }
+         view()->share([
+             'wt_notification' => $notdata,
+         ]);
     }
 
     /**
@@ -26,13 +33,6 @@ class NotificationrServiceProvider extends ServiceProvider
     public function boot()
     {
            $this->loadMigrationsFrom(__DIR__.'/migrations');
-           $data=Notification::whereBetween(DB::raw('NOW()'),[DB::raw('startdate'),DB::raw('enddate')])->get();
-           $notdata='';
-           foreach($data as $ms){
-                $notdata.="<p class='cls-wt-notification alert alert-warning'>$ms->message</p>";
-           }
-            view()->share([
-                'wt_notification' => $notdata,
-            ]);
+           
     }
 }
